@@ -37,7 +37,6 @@ startGameButton.addEventListener(`click`, function () {
   const username = userName.value;
   game = new RockPaperScissors(username);
   game.play(user_selection);
-  console.log(game.score.user);
   gameScreen.classList.remove(`d-none`);
   welcomeScreen.classList.add(`d-none`);
   // Complete

@@ -34,39 +34,41 @@ class RockPaperScissors {
    * @param {string} cpuSelection computer selection. Can only be one of the following values [`rock`, `paper`, `scissors`]
    */
   determineWinner(userSelection, cpuSelection) {
-    switch (userSelection) {
-      case "Rock":
-        switch (cpuSelection) {
-          case "Rock":
-            return "tie";
-          case "Paper":
-            return "lose";
-          case "Scissors":
-            return "win";
-        }
-        break;
+    {
+      switch (userSelection) {
+        case userSelection == "Rock":
+          switch (cpuSelection) {
+            case cpuSelection == "Rock":
+              return "tie";
+            case cpuSelection == "Paper":
+              return "lose";
+            case cpuSelection == "Scissors":
+              return "win";
+          }
+          break;
 
-      case "Paper":
-        switch (cpuSelection) {
-          case "Rock":
-            return "win";
-          case "Paper":
-            return "tie";
-          case "Scissors":
-            return "lose";
-        }
-        break;
+        case userSelection == "Paper":
+          switch (cpuSelection) {
+            case cpuSelection == "Rock":
+              return "win";
+            case cpuSelection == "Paper":
+              return "tie";
+            case cpuSelection == "Scissors":
+              return "lose";
+          }
+          break;
 
-      case "Scissors":
-        switch (cpuSelection) {
-          case "Rock":
-            return "lose";
-          case "Paper":
-            return "win";
-          case "Scissors":
-            return "tie";
-        }
-        break;
+        case userSelection == "Scissors":
+          switch (cpuSelection) {
+            case cpuSelection == "Rock":
+              return "lose";
+            case cpuSelection == "Paper":
+              return "win";
+            case cpuSelection == "Scissors":
+              return "tie";
+          }
+          break;
+      }
     }
   }
 
@@ -76,14 +78,12 @@ class RockPaperScissors {
    */
   play(userSelection) {
     const cpu_choice = this.generateCPUResponse();
-    console.log(cpu_choice);
     const winner = this.determineWinner(userSelection, cpu_choice);
     if (winner == cpu_choice) {
       this.score.cpu++;
     } else if (winner == userSelection) {
       this.score.user++;
     }
-    console.log(winner);
     this.gameHistoryLog.push(
       `${this.username} selected: ${userSelection}, CPU selected: ${cpu_choice} - ${winner} wins.`
     );
