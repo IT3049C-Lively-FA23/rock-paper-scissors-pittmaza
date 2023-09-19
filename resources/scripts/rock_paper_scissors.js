@@ -36,35 +36,35 @@ class RockPaperScissors {
   determineWinner(userSelection, cpuSelection) {
     {
       switch (userSelection) {
-        case userSelection == "Rock":
+        case "Rock":
           switch (cpuSelection) {
-            case cpuSelection == "Rock":
+            case "Rock":
               return "tie";
-            case cpuSelection == "Paper":
+            case "Paper":
               return "lose";
-            case cpuSelection == "Scissors":
+            case "Scissors":
               return "win";
           }
           break;
 
-        case userSelection == "Paper":
+        case "Paper":
           switch (cpuSelection) {
-            case cpuSelection == "Rock":
+            case "Rock":
               return "win";
-            case cpuSelection == "Paper":
+            case "Paper":
               return "tie";
-            case cpuSelection == "Scissors":
+            case "Scissors":
               return "lose";
           }
           break;
 
-        case userSelection == "Scissors":
+        case "Scissors":
           switch (cpuSelection) {
-            case cpuSelection == "Rock":
+            case "Rock":
               return "lose";
-            case cpuSelection == "Paper":
+            case "Paper":
               return "win";
-            case cpuSelection == "Scissors":
+            case "Scissors":
               return "tie";
           }
           break;
@@ -79,14 +79,20 @@ class RockPaperScissors {
   play(userSelection) {
     const cpu_choice = this.generateCPUResponse();
     const winner = this.determineWinner(userSelection, cpu_choice);
+    let final_winner;
+
     if (winner == cpu_choice) {
       this.score.cpu++;
+      final_winner = "CPU";
     } else if (winner == userSelection) {
       this.score.user++;
+      final_winner = this.username;
+    } else {
+      final_winner = "tie";
     }
+
     this.gameHistoryLog.push(
-      `${this.username} selected: ${userSelection}, CPU selected: ${cpu_choice} - ${winner} wins.`
+      `${this.username} selected: ${userSelection}, CPU selected: ${cpu_choice} & ${final_winner} wins.`
     );
-    console.log(this.gameHistoryLog.length);
   }
 }
