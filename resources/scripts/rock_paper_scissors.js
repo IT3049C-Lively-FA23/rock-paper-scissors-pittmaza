@@ -1,19 +1,19 @@
 class RockPaperScissors {
   constructor(username) {
     this.username = username;
-    this.score = {
+    (this.score = {
       user: 0,
-      cpu:0
-    },
-    this.gameHistoryLog = [];
+      cpu: 0,
+    }),
+      (this.gameHistoryLog = []);
   }
 
   /**
    * RETURN: one of the following values (`rock`, `paper`, `scissors`)
    * using Math.random() method, you should be able to get one of the following values
    */
-  generateCPUResponse(){
-    const acceptedValues = ['Rock', 'Paper', 'Scissors' ];
+  generateCPUResponse() {
+    const acceptedValues = ["Rock", "Paper", "Scissors"];
     const index = Math.floor(Math.random() * acceptedValues.length);
     //this is returning the string of the index
     return acceptedValues[index];
@@ -22,69 +22,70 @@ class RockPaperScissors {
    * returns one of the following values: `win`, `lose`, `tie`
    * tie:
    *     the user selection the same as the CPU
-   * win: 
+   * win:
    *    (user is `rock` and cpu is `scissors
    *     OR
-   *    (user is `paper` and cpu is `rock`) 
-   *     OR 
+   *    (user is `paper` and cpu is `rock`)
+   *     OR
    *    (user is `scissors` and cpu is `paper`)
    * `lose`:
    *    the opposite case :)
    * @param {string} userSelection user selection. Can only be one of the following values [`rock`, `paper`, `scissors`]
    * @param {string} cpuSelection computer selection. Can only be one of the following values [`rock`, `paper`, `scissors`]
    */
-  determineWinner(userSelection, cpuSelection){
+  determineWinner(userSelection, cpuSelection) {
+    switch (userSelection) {
+      case "Rock":
+        switch (cpuSelection) {
+          case "Rock":
+            return "tie";
+          case "Paper":
+            return "lose";
+          case "Scissors":
+            return "win";
+        }
+        break;
 
-    switch(userSelection) {
-      case 'Rock':
-       switch(cpuSelection) {
-        case 'Rock':
-          return 'tie';
-        case 'Paper':
-          return 'lose';
-        case 'Scissors':
-          return 'win';
-       } break;
+      case "Paper":
+        switch (cpuSelection) {
+          case "Rock":
+            return "win";
+          case "Paper":
+            return "tie";
+          case "Scissors":
+            return "lose";
+        }
+        break;
 
-       case 'Paper':
-       switch(cpuSelection) {
-        case 'Rock':
-          return 'win';
-        case 'Paper':
-          return 'tie';
-        case 'Scissors':
-          return 'lose';
-       } break;
-
-       case 'Scissors':
-       switch(cpuSelection) {
-        case 'Rock':
-          return 'lose';
-        case 'Paper':
-          return 'win';
-        case 'Scissors':
-          return 'tie';
-       } break;
-      
+      case "Scissors":
+        switch (cpuSelection) {
+          case "Rock":
+            return "lose";
+          case "Paper":
+            return "win";
+          case "Scissors":
+            return "tie";
+        }
+        break;
     }
   }
 
   /**
-   * 
+   *
    * @param {string} userSelection user selection. Can only be one of the following values [`rock`, `paper`, `scissors`]
    */
-  play(userSelection){
+  play(userSelection) {
     const cpu_choice = this.generateCPUResponse();
-    const winner = this.determineWinner(userSelection, cpu_choice)
-    if (winner == 'win') {
-      this.score.user ++;
-    } else if (winner == 'lose') {
-      this.score.cpu ++;
-    } 
+    const winner = this.determineWinner(userSelection, cpu_choice);
+    if (winner == 0) {
+      this.score.user++;
+    } else if (winner == 1) {
+      this.score.cpu++;
+    }
+    console.log(winnerwinner);
     this.gameHistoryLog.push(
       `${this.username} selected: ${userSelection}, CPU selected: ${cpu_choice} - ${winner} wins.`
     );
-    console.log(this.gameHistoryLog.length)
+    console.log(this.gameHistoryLog.length);
   }
-
 }
