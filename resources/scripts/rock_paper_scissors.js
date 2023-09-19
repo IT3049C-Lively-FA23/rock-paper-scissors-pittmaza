@@ -76,13 +76,14 @@ class RockPaperScissors {
    */
   play(userSelection) {
     const cpu_choice = this.generateCPUResponse();
+    console.log(cpu_choice);
     const winner = this.determineWinner(userSelection, cpu_choice);
-    if (winner == 0) {
-      this.score.user++;
-    } else if (winner == 1) {
+    if (winner == cpu_choice) {
       this.score.cpu++;
+    } else if (winner == userSelection) {
+      this.score.user++;
     }
-    console.log(winnerwinner);
+    console.log(winner);
     this.gameHistoryLog.push(
       `${this.username} selected: ${userSelection}, CPU selected: ${cpu_choice} - ${winner} wins.`
     );
