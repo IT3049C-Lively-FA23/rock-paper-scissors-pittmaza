@@ -34,41 +34,16 @@ class RockPaperScissors {
    * @param {string} cpuSelection computer selection. Can only be one of the following values [`rock`, `paper`, `scissors`]
    */
   determineWinner(userSelection, cpuSelection) {
-    {
-      switch (userSelection) {
-        case "Rock":
-          switch (cpuSelection) {
-            case "Rock":
-              return "tie";
-            case "Paper":
-              return "lose";
-            case "Scissors":
-              return "win";
-          }
-          break;
-
-        case "Paper":
-          switch (cpuSelection) {
-            case "Rock":
-              return "win";
-            case "Paper":
-              return "tie";
-            case "Scissors":
-              return "lose";
-          }
-          break;
-
-        case "Scissors":
-          switch (cpuSelection) {
-            case "Rock":
-              return "lose";
-            case "Paper":
-              return "win";
-            case "Scissors":
-              return "tie";
-          }
-          break;
-      }
+    if (userSelection === cpuSelection) {
+      return "tie";
+    } else if (
+      (userSelection === "Rock" && cpuSelection === "Scissors") ||
+      (userSelection === "Paper" && cpuSelection === "Rock") ||
+      (userSelection === "Scissors" && cpuSelection === "Paper")
+    ) {
+      return "win";
+    } else {
+      return "lose";
     }
   }
 
@@ -80,12 +55,15 @@ class RockPaperScissors {
     const cpu_choice = this.generateCPUResponse();
     const winner = this.determineWinner(userSelection, cpu_choice);
     let final_winner;
-
-    if (winner == cpu_choice) {
-      this.score.cpu++;
+    console.log(winner);
+    console.log(cpu_choice);
+    console.log(userSelection);
+    if (winner === cpu_choice) {
+      console.log("here");
+      this.score.cpu + 1;
       final_winner = "CPU";
-    } else if (winner == userSelection) {
-      this.score.user++;
+    } else if (winner === userSelection) {
+      this.score.user + 1;
       final_winner = this.username;
     } else {
       final_winner = "tie";

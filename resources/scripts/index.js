@@ -46,6 +46,7 @@ startGameButton.addEventListener(`click`, function () {
 goButton.addEventListener(`click`, function () {
   const user_selection = userSelection.value;
   game.play(user_selection);
+  console.log(game);
   updateScoreTallyUI(); // Update the score display
   updateGameHistoryUI(); // Update the game history display
 });
