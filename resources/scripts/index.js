@@ -17,7 +17,7 @@ form.addEventListener("submit", function (e) {
 let game;
 
 // hide game screen
-//gameScreen.classList.add(`d-none`);
+gameScreen.classList.add(`d-none`);
 
 // updateScoreTallyUI
 function updateScoreTallyUI(){
@@ -26,11 +26,7 @@ function updateScoreTallyUI(){
 
 // updateGameHistoryUI
 function updateGameHistoryUI(){
-  for (const entry of game.gameHistoryLog) {
-    const historyEntry = document.createElement('p');
-    historyEntry.textContent = entry;
-    gameHistoryParagraph.appendChild(historyEntry);
-  }
+  gameHistoryParagraph.textContent = game.gameHistoryLog;
 }
   
 
@@ -44,8 +40,8 @@ startGameButton.addEventListener(`click`, function () {
   game = new RockPaperScissors(username);
   game.play(user_selection)
   console.log(game.score.user)
-  // gameScreen.classList.remove(`d-none`);
-  // welcomeScreen.classList.add(`d-none`);
+  gameScreen.classList.remove(`d-none`);
+  welcomeScreen.classList.add(`d-none`);
   // Complete
 });
 
@@ -56,6 +52,7 @@ goButton.addEventListener(`click`, function () {
   game.play(user_selection)
   updateScoreTallyUI(); // Update the score display
   updateGameHistoryUI(); // Update the game history display
+
 });
 
 // If you're doing the extra-credit, uncomment the below: reset-game-button

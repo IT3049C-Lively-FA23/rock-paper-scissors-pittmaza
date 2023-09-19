@@ -13,8 +13,9 @@ class RockPaperScissors {
    * using Math.random() method, you should be able to get one of the following values
    */
   generateCPUResponse(){
-    const acceptedValues = ['rock', 'paper', 'scissors' ];
+    const acceptedValues = ['Rock', 'Paper', 'Scissors' ];
     const index = Math.floor(Math.random() * acceptedValues.length);
+    //this is returning the string of the index
     return acceptedValues[index];
   }
   /**
@@ -35,33 +36,33 @@ class RockPaperScissors {
   determineWinner(userSelection, cpuSelection){
 
     switch(userSelection) {
-      case 'rock':
+      case 'Rock':
        switch(cpuSelection) {
-        case 'rock':
+        case 'Rock':
           return 'tie';
-        case 'paper':
+        case 'Paper':
           return 'lose';
-        case 'scissors':
+        case 'Scissors':
           return 'win';
        } break;
 
-       case 'paper':
+       case 'Paper':
        switch(cpuSelection) {
-        case 'rock':
+        case 'Rock':
           return 'win';
-        case 'paper':
+        case 'Paper':
           return 'tie';
-        case 'scissors':
+        case 'Scissors':
           return 'lose';
        } break;
 
-       case 'scissors':
+       case 'Scissors':
        switch(cpuSelection) {
-        case 'rock':
+        case 'Rock':
           return 'lose';
-        case 'paper':
+        case 'Paper':
           return 'win';
-        case 'scissors':
+        case 'Scissors':
           return 'tie';
        } break;
       
@@ -75,7 +76,6 @@ class RockPaperScissors {
   play(userSelection){
     const cpu_choice = this.generateCPUResponse();
     const winner = this.determineWinner(userSelection, cpu_choice)
-    console.log(winner)
     if (winner == 'win') {
       this.score.user ++;
     } else if (winner == 'lose') {
@@ -84,6 +84,7 @@ class RockPaperScissors {
     this.gameHistoryLog.push(
       `${this.username} selected: ${userSelection}, CPU selected: ${cpu_choice} - ${winner} wins.`
     );
+    console.log(this.gameHistoryLog.length)
   }
 
 }
