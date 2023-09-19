@@ -94,5 +94,6 @@ class RockPaperScissors {
     this.gameHistoryLog.push(
       `${this.username} selected: ${userSelection}, CPU selected: ${cpu_choice} & ${final_winner} wins.`
     );
+    return winner;
   }
 }
